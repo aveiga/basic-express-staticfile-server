@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "4.17.1"
+  },
+  "name": "basic-express-staticfile-server",
+  "description": "",
+  "version": "0.0.1",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aveiga/basic-express-staticfile-server.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aveiga/basic-express-staticfile-server/issues"
+  },
+  "homepage": "https://github.com/aveiga/basic-express-staticfile-server#readme"
+}
