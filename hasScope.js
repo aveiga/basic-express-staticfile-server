@@ -1,3 +1,5 @@
+import { ForbiddenError } from "./errorHandler.js";
+
 export default function hasScope(scope) {
   return function (req, res, next) {
     try {
@@ -8,7 +10,7 @@ export default function hasScope(scope) {
       ) {
         next();
       } else {
-        res.status(403).send();
+        throw new ForbiddenError(req, "username");
       }
     } catch (err) {
       next(err);

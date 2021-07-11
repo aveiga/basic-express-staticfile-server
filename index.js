@@ -1,7 +1,8 @@
 import express from "express";
 import session from "express-session";
 import Keycloak from "keycloak-connect";
-import hasScope from "./hasScope.js";
+import requestLogger from "./logger.js";
+import router from "./routes.js";
 import errorHandler from "./errorHandler.js";
 
 const app = express();
@@ -21,13 +22,12 @@ app.use(
 
 app.use(keycloak.middleware());
 app.use(keycloak.protect());
+app.use(requestLogger);
 app.use(express.static("public"));
-// app.use(errorHandler);
 
-app.get("/guitars", hasScope("email"), (req, res) => {
-  console.log(req);
-  res.send({ model: "Strat", brand: "Fender" });
-});
+app.use(router);
+
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

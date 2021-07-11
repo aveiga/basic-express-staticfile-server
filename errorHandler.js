@@ -1,13 +1,15 @@
-function generateErrorPayload(message, category) {
-  return {
-    message: message,
-    category: category,
-  };
+export class ForbiddenError extends Error {
+  constructor(req, username, message = "Access Forbidden") {
+    super();
+    this.statusCode = 403;
+    this.message = message;
+    this.category = "access_control";
+    this.username = req.kauth.grant.access_token.content.preferred_username;
+    this.timestamp = new Date();
+  }
 }
 
 export default function errorHandler(err, req, res, next) {
-  switch (res.status) {
-    case "403":
-      res.send(generateErrorPayload("forbidden", "access_control"));
-  }
+  console.log(err);
+  res.status(err.statusCode).send(err);
 }
