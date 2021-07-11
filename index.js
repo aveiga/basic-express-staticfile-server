@@ -1,11 +1,32 @@
-const express = require("express");
+import express from "express";
+import session from "express-session";
+import Keycloak from "keycloak-connect";
+import hasScope from "./hasScope.js";
+import errorHandler from "./errorHandler.js";
+
 const app = express();
 const port = 3000;
 
-app.use(express.static("public"));
+const memoryStore = new session.MemoryStore();
+const keycloak = new Keycloak({ store: memoryStore });
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.use(
+  session({
+    secret: "some secret",
+    resave: false,
+    saveUninitialized: true,
+    store: memoryStore,
+  })
+);
+
+app.use(keycloak.middleware());
+app.use(keycloak.protect());
+app.use(express.static("public"));
+// app.use(errorHandler);
+
+app.get("/guitars", hasScope("email"), (req, res) => {
+  console.log(req);
+  res.send({ model: "Strat", brand: "Fender" });
 });
 
 app.listen(port, () => {
