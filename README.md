@@ -10,7 +10,7 @@
 - ✅ Authentication and Authorization using OAuth v2
 - [Service Discovery](https://github.com/jquatier/eureka-js-client)
 - [Rate Limiting](https://github.com/animir/node-rate-limiter-flexible/wiki/Express-Middleware)
-- [Logging](https://geshan.com.np/blog/2021/01/nodejs-logging-library/)
+- ✅ [Logging](https://geshan.com.np/blog/2021/01/nodejs-logging-library/)
 - ✅ Error Handling
 - [Testing](https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6)
 - API Documentation

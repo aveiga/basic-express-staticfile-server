@@ -12,6 +12,6 @@ app.use(guitarRouter);
 
 postRouteMiddleware(app);
 
-app.listen(port, () => {
+export const server = app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
