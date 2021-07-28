@@ -1,35 +1,19 @@
 {
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "express": "4.17.1",
-    "express-session": "^1.17.2",
-    "keycloak-connect": "^14.0.0",
-    "passport": "^0.4.1",
-    "passport-oauth": "^1.0.0",
-    "passport-oauth2": "^1.6.0"
-  },
-  "name": "basic-express-staticfile-server",
-  "description": "",
+  "name": "nodejs-ms-playground",
   "version": "0.0.1",
-  "type": "module",
-  "main": "index.js",
-  "devDependencies": {
-    "nodemon": "^2.0.12"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
-  },
+  "description": "",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aveiga/basic-express-staticfile-server.git"
   },
-  "author": "",
+  "author": "André Veiga",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/aveiga/basic-express-staticfile-server/issues"
   },
-  "homepage": "https://github.com/aveiga/basic-express-staticfile-server#readme"
+  "homepage": "https://github.com/aveiga/basic-express-staticfile-server#readme",
+  "workspaces":[
+    "basic-express-staticfile-server",
+    "middleware"
+  ]
 }

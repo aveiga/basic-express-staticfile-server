@@ -1,0 +1,16 @@
+{
+  "name": "middleware",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "express-session": "^1.17.2",
+    "keycloak-connect": "^14.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "André Veiga",
+  "license": "MIT"
+}
