@@ -6,7 +6,9 @@
   "type": "module",
   "dependencies": {
     "express-session": "^1.17.2",
-    "keycloak-connect": "^14.0.0"
+    "express-winston": "^4.1.0",
+    "keycloak-connect": "^14.0.0",
+    "winston": "^3.3.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

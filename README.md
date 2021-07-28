@@ -18,3 +18,7 @@
 - [Websockets](https://www.npmjs.com/package/ws)
 - Developing and serving UI fragments
 - ✅ Serving UI assets
+
+## To cleanup
+- keycloak.json > get values from env vars
+- logger > define format

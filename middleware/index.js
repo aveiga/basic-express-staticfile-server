@@ -1,15 +1,19 @@
 import session from "express-session";
 import Keycloak from "keycloak-connect";
+import winston from "winston";
+import * as expressWinston from "express-winston";
 
-import * as logger from "./src/logging/logger.js";
-import * as errorHandler from "./src/error-handling/errorHandler.js";
+import * as logging from "./src/logging/logger.js";
+import * as errorHandling from "./src/error-handling/errorHandler.js";
 
 export * as uaa from "./src/uaa/uaa.js";
+export * as logging from "./src/logging/logger.js";
+export * as errorHandling from "./src/error-handling/errorHandler.js";
 
-export const middleware = {
-    logging: logger,
-    errorHandling: errorHandler
-};
+// export const middleware = {
+//     logging: logger,
+//     errorHandling: errorHandler
+// };
 
 export function preRouteMiddleware(app) {
     const memoryStore = new session.MemoryStore();
@@ -24,11 +28,19 @@ export function preRouteMiddleware(app) {
         })
     );
 
-    app.use(keycloak.middleware());
-    app.use(keycloak.protect());
-    app.use(middleware.logging.requestLogger);
+    // app.use(keycloak.middleware());
+    // app.use(keycloak.protect());
+
+    app.use(expressWinston.logger({
+        ...logging.loggerOptions,
+        meta: false,
+        msg: "HTTP  ",
+        expressFormat: true,
+        colorize: false,
+        ignoreRoute: function (req, res) { return false; }
+    }));
 }
 
 export function postRouteMiddleware(app) {
-    app.use(middleware.errorHandling.errorHandler);
+    app.use(errorHandling.errorHandler);
 }
