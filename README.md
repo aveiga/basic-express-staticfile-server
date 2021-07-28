@@ -12,7 +12,7 @@
 - [Rate Limiting](https://github.com/animir/node-rate-limiter-flexible/wiki/Express-Middleware)
 - ✅ [Logging](https://geshan.com.np/blog/2021/01/nodejs-logging-library/)
 - ✅ Error Handling
-- [Testing](https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6)
+- ✅ [Testing](https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6)
 - API Documentation
 - [Monitoring](https://stackabuse.com/nodejs-application-monitoring-with-prometheus-and-grafana)
 - [Websockets](https://www.npmjs.com/package/ws)
