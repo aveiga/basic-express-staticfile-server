@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "4.17.1",
+    "passport": "^0.4.1",
+    "passport-oauth": "^1.0.0",
+    "passport-oauth2": "^1.6.0"
+  },
+  "name": "basic-express-staticfile-server",
+  "description": "",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aveiga/basic-express-staticfile-server.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aveiga/basic-express-staticfile-server/issues"
+  },
+  "homepage": "https://github.com/aveiga/basic-express-staticfile-server#readme"
+}
