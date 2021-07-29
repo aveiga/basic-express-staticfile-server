@@ -18,7 +18,7 @@
 - [Websockets](https://www.npmjs.com/package/ws)
 - Developing and serving UI fragments
 - ✅ Serving UI assets
-- [Typescript](https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/)
+- ✅ [Typescript](https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/)
 
 ## To cleanup
 - keycloak.json > get values from env vars
