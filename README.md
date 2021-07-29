@@ -22,3 +22,10 @@
 ## To cleanup
 - keycloak.json > get values from env vars
 - logger > define format
+- try to use pure oauth libs
+
+## FAQ
+### How to get Keycloak to run on Docker Compose on M1 MacBooks 💻?
+Quick answer:
+- build the image locally (more info here: https://github.com/docker/for-mac/issues/5310)
+- mount the pgdata volume to a directory below your home folder (or, preferably, in the repo folder)

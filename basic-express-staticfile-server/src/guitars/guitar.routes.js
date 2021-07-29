@@ -1,6 +1,5 @@
 import express from "express";
 import { uaa, logging } from "middleware";
-import {  } from "module";
 import { getAll } from "./guitar.service.js";
 
 const router = express.Router();

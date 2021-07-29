@@ -1,0 +1,64 @@
+version: "2"
+services:
+    keycloakpostgres:
+        image: postgres
+        restart: always
+        volumes:
+        - ./tmp/keycloakpostgres/pgdata:/var/lib/postgresql/data/pgdata
+        ports:
+        - 5432:5432
+        environment:
+            POSTGRES_DB: keycloak
+            POSTGRES_USER: keycloak
+            POSTGRES_PASSWORD: password
+            PGDATA: /var/lib/postgresql/data/pgdata
+    keycloak:
+        image: aveiga/keycloak:14.0.0
+        restart: always
+        ports:
+        - 8080:8080
+        environment:
+            DB_VENDOR: POSTGRES
+            DB_ADDR: keycloakpostgres
+            DB_DATABASE: keycloak
+            DB_USER: keycloak
+            DB_SCHEMA: public
+            DB_PASSWORD: password
+            KEYCLOAK_USER: admin
+            KEYCLOAK_PASSWORD: password
+        depends_on:
+        - keycloakpostgres
+    apppostgres:
+        image: postgres
+        restart: always
+        volumes:
+        - ./tmp/apppostgres/pgdata:/var/lib/postgresql/data/pgdata
+        ports:
+        - 5433:5432
+        environment:
+            POSTGRES_DB: keycloak
+            POSTGRES_USER: keycloak
+            POSTGRES_PASSWORD: password
+            PGDATA: /var/lib/postgresql/data/pgdata
+  # jaeger:
+  #   image: jaegertracing/all-in-one
+  #   ports:
+  #     - "5775:5775/udp"
+  #     - "6831:6831/udp"
+  #     - "6832:6832/udp"
+  #     - "5778:5778"
+  #     - "16686:16686"
+  #     - "14268:14268"
+  #     - "9411:9411"
+  #   depends_on:
+  #     - consul
+  #     - postgres
+  # redis:
+  #   image: "bitnami/redis:latest"
+  #   networks:
+  #     consul-network:
+  #       ipv4_address: 172.18.0.5
+  #   environment:
+  #     - ALLOW_EMPTY_PASSWORD=yes
+  #   ports:
+  #     - "6379:6379"
