@@ -1,5 +1,5 @@
 import request from "supertest";
-import { server } from "../../index";
+import { server } from "../index";
 
 describe('GET Guitar Endpoints', () => {
   it('should get a guitars list', async () => {
