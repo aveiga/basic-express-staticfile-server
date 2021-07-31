@@ -24,6 +24,8 @@
 - keycloak.json > get values from env vars
 - logger > define format
 - try to use pure oauth libs
+- postgres > get values from env vars
+- db > use sqlite (already a dev dep) instead of postgres when in dev mode
 
 ## FAQ
 ### How to get Keycloak to run on Docker Compose on M1 MacBooks 💻?
