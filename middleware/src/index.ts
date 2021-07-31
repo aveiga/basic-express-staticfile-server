@@ -9,11 +9,7 @@ import * as errorHandling from "./error-handling/errorHandler.js";
 export * as uaa from "./uaa/uaa.js";
 export * as logging from "./logging/logger.js";
 export * as errorHandling from "./error-handling/errorHandler.js";
-
-// export const middleware = {
-//     logging: logger,
-//     errorHandling: errorHandler
-// };
+export * as data from "./db/connectionFactory.js";
 
 export function preRouteMiddleware(app) {
     const memoryStore = new session.MemoryStore();

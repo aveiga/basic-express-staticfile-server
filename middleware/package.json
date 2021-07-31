@@ -8,6 +8,7 @@
     "express-session": "^1.17.2",
     "express-winston": "^4.1.0",
     "keycloak-connect": "^14.0.0",
+    "typeorm": "^0.2.36",
     "winston": "^3.3.3"
   },
   "scripts": {

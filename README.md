@@ -5,7 +5,7 @@
 - [Messaging using AMQP](https://www.npmjs.com/package/amqplib)
 - [Input Validation](https://express-validator.github.io/docs/)
 - [Axios](https://blog.openreplay.com/fetch-vs-axios-which-is-the-best-library-for-making-http-requests)
-- [DB with PostgreSQL](https://typeorm.io/#/)
+- ✅ [DB with PostgreSQL](https://typeorm.io/#/)
 - [DB Versioning](https://typeorm.io/#/migrations)
 - ✅ Authentication and Authorization using OAuth v2
 - [Service Discovery](https://github.com/jquatier/eureka-js-client)
@@ -18,7 +18,7 @@
 - [Websockets](https://www.npmjs.com/package/ws)
 - Developing and serving UI fragments
 - ✅ Serving UI assets
-- ✅ [Typescript](https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/)
+- ✅ [Typescript](https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/ and https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/)
 
 ## To cleanup
 - keycloak.json > get values from env vars

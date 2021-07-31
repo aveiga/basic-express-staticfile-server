@@ -1,6 +1,12 @@
 import express from "express";
-import { preRouteMiddleware, postRouteMiddleware } from "middleware";
+import "reflect-metadata";
+import { createConnection } from "typeorm";
+
+import { preRouteMiddleware, postRouteMiddleware, data } from "middleware";
 import guitarRouter from "./guitars/guitar.routes.js";
+import { Guitar } from "./guitars/guitar.model.js";
+
+await data.setupDBConnection(createConnection, [ Guitar ]);
 
 const app = express();
 const port = process.env.PORT || 3000;
