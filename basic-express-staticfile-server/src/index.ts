@@ -1,10 +1,13 @@
 import express from "express";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
+import dotenv from "dotenv";
 
 import { preRouteMiddleware, postRouteMiddleware, data } from "middleware";
 import guitarRouter from "./guitars/guitar.routes.js";
 import { Guitar } from "./guitars/guitar.model.js";
+
+dotenv.config();
 
 await data.setupDBConnection(createConnection, [ Guitar ]);
 
