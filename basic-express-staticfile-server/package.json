@@ -35,10 +35,9 @@
     "typescript": "^4.3.5"
   },
   "scripts": {
-    "build": "tsc --build",
-    "dev": "NODE_ENV=DEV tsc --build --watch & NODE_ENV=DEV npm run start",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
-    "start": "nodemon ./build/index.js"
+    "dev": "NODE_ENV=DEV npm run start",
+    "test": "NODE_ENV=DEV NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "start": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
