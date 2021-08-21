@@ -38,6 +38,10 @@
         fetch("/guitars").then(res => res.json()).then(d => {
             document.getElementById("guitars").innerText = JSON.stringify(d);
         })
+
+        var exampleSocket = new WebSocket("/api/common/websocket");
+        exampleSocket.onmessage(console.log);
+        exampleSocket.send("hi, server");
     </script>
 </body>
 

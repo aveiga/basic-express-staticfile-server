@@ -1,6 +1,6 @@
 import session from "express-session";
 import Keycloak from "keycloak-connect";
-import winston from "winston";
+// import winston from "winston";
 import * as expressWinston from "express-winston";
 
 import * as logging from "./logging/logger.js";
@@ -10,6 +10,7 @@ export * as uaa from "./uaa/uaa.js";
 export * as logging from "./logging/logger.js";
 export * as errorHandling from "./error-handling/errorHandler.js";
 export * as data from "./db/connectionFactory.js";
+export * as ws from "./ws/connectionFactory.js";
 
 export function preRouteMiddleware(app) {
     const memoryStore = new session.MemoryStore();
