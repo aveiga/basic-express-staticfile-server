@@ -1,6 +1,6 @@
 import express from "express";
 import { body } from "express-validator";
-import { uaa, logging, validator } from "middleware";
+import { uaa, logging, validator, rateLimiting } from "middleware";
 import { getAll, createOne } from "./guitar.service.js";
 
 const router = express.Router();
@@ -18,6 +18,14 @@ router.post(
   "/unsecure-guitars",
   body("brand").not().isEmpty().trim().escape(),
   validator.validationErrorHandler,
+  async (req, res) => {
+    res.send(await createOne());
+  }
+);
+
+router.post(
+  "/rate-limited",
+  rateLimiting.generateRateLimiter(1, 1),
   async (req, res) => {
     res.send(await createOne());
   }

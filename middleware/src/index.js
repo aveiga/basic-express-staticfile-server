@@ -5,6 +5,7 @@ import * as expressWinston from "express-winston";
 
 import * as logging from "./logging/logger.js";
 import * as errorHandling from "./error-handling/errorHandler.js";
+import * as monitoring from "./monitoring/monitor.js";
 
 export * as uaa from "./uaa/uaa.js";
 export * as logging from "./logging/logger.js";
@@ -13,6 +14,7 @@ export * as data from "./db/connectionFactory.js";
 export * as ws from "./ws/connectionFactory.js";
 export * as amqp from "./amqp/connectionFactory.js";
 export * as validator from "./input-validation/validator.js";
+export * as rateLimiting from "./rate-limiting/rateLimiterFactory.js";
 
 export function preRouteMiddleware(app) {
   const memoryStore = new session.MemoryStore();
@@ -42,6 +44,8 @@ export function preRouteMiddleware(app) {
       },
     })
   );
+
+  monitoring.setupMonitoring(app);
 }
 
 export function postRouteMiddleware(app) {

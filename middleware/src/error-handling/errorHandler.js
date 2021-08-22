@@ -32,7 +32,15 @@ export class ForbiddenError extends CustomError {
   }
 }
 
+export class TooManyRequestsError extends CustomError {
+  constructor(req, message = "Too Many Requests") {
+    super(req);
+    this.statusCode = 429;
+    this.message = message;
+    this.category = ErrorCategories.ACCESS_CONTROL;
+  }
+}
+
 export function errorHandler(err, req, res, next) {
-  // console.error(err);
   res.status(err.statusCode).send(err);
 }
