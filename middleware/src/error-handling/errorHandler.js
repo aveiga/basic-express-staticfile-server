@@ -1,9 +1,9 @@
 export class ForbiddenError extends Error {
-  statusCode: number;
-  message: string;
-  category: string;
-  username: string;
-  timestamp: number
+  statusCode;
+  message;
+  category;
+  username;
+  timestamp;
 
   constructor(req, username, message = "Access Forbidden") {
     super();

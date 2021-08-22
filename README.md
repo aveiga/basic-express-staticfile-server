@@ -19,7 +19,6 @@
 - [Websockets](https://www.npmjs.com/package/ws)
 - Developing and serving UI fragments
 - ✅ Serving UI assets
-- ✅ [Typescript](https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/ and https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/)
 
 ## To cleanup
 - keycloak.json > get values from env vars
@@ -31,3 +30,6 @@
 Quick answer:
 - build the image locally (more info here: https://github.com/docker/for-mac/issues/5310)
 - mount the pgdata volume to a directory below your home folder (or, preferably, in the repo folder)
+
+## Topics not covered
+- [Typescript](https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/ and https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/)

@@ -12,10 +12,6 @@ dotenv.config();
 export var server = null;
 
 await data.setupDBConnection(createConnection, [GuitarEntitySchema]).then((connection) => {
-  // const wsserver = ws.setupWSServer((socket) => {
-  //   socket.send("hi, you");
-  // });
-
   const app = express();
   const port = process.env.PORT || 3000;
 
@@ -28,5 +24,10 @@ await data.setupDBConnection(createConnection, [GuitarEntitySchema]).then((conne
 
   server = app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
+  });
+
+  const wsserver = ws.setupWSServer(server, ()=>{console.log("connected to the wss")}, (wss, m) => {
+    console.log(m);
+    wss.send("hi back!");
   });
 });

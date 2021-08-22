@@ -35,13 +35,16 @@
             return null;
         }
 
-        fetch("/guitars").then(res => res.json()).then(d => {
+        fetch("/unsecure-guitars").then(res => res.json()).then(d => {
             document.getElementById("guitars").innerText = JSON.stringify(d);
         })
 
-        var exampleSocket = new WebSocket("/api/common/websocket");
-        exampleSocket.onmessage(console.log);
-        exampleSocket.send("hi, server");
+        var exampleSocket = new WebSocket("ws://localhost:3000/wss");
+        exampleSocket.onopen = e => {
+            exampleSocket.send("hi, server");
+        }
+        exampleSocket.onmessage = console.log;
+        
     </script>
 </body>
 

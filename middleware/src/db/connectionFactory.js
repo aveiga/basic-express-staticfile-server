@@ -1,11 +1,9 @@
-import { Connection } from "typeorm";
-
 export function setupDBConnection(
-  createConnection: Function,
-  entities: [Object|string],
-  migrations: [Object|string],
-  subscribers:  [Object|string]
-): Promise<Connection> {
+  createConnection,
+  entities,
+  migrations,
+  subscribers
+) {
   console.log(process.env.NODE_ENV);
   
   const basePostgresOptions = {
