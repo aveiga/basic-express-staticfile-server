@@ -4,8 +4,6 @@ export function setupDBConnection(
   migrations,
   subscribers
 ) {
-  console.log(process.env.NODE_ENV);
-  
   const basePostgresOptions = {
     type: "postgres",
     host: process.env.DB_ADDR,
@@ -19,10 +17,11 @@ export function setupDBConnection(
     type: "sqlite",
     database: process.env.DEV_DB_PATH || "./db.sql",
     synchronize: true,
-    logging: false
+    logging: false,
   };
 
-  const baseOptions = process.env.NODE_ENV === "DEV" ? baseSQLiteOptions : basePostgresOptions;
+  const baseOptions =
+    process.env.NODE_ENV === "DEV" ? baseSQLiteOptions : basePostgresOptions;
 
   return createConnection({
     ...baseOptions,

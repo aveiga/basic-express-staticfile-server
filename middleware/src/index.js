@@ -12,6 +12,7 @@ export * as errorHandling from "./error-handling/errorHandler.js";
 export * as data from "./db/connectionFactory.js";
 export * as ws from "./ws/connectionFactory.js";
 export * as amqp from "./amqp/connectionFactory.js";
+export * as validator from "./input-validation/validator.js";
 
 export function preRouteMiddleware(app) {
   const memoryStore = new session.MemoryStore();
