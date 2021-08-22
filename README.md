@@ -16,7 +16,7 @@
 - ✅ [Testing](https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6)
 - API Documentation
 - [Monitoring](https://stackabuse.com/nodejs-application-monitoring-with-prometheus-and-grafana)
-- [Websockets](https://www.npmjs.com/package/ws)
+- ✅ [Websockets](https://www.npmjs.com/package/ws)
 - Developing and serving UI fragments
 - ✅ Serving UI assets
 
@@ -24,6 +24,7 @@
 - keycloak.json > get values from env vars
 - logger > define format
 - try to use pure oauth libs
+- Websocket: keep alive
 
 ## FAQ
 ### How to get Keycloak to run on Docker Compose on M1 MacBooks 💻?

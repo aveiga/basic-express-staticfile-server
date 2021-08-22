@@ -10,24 +10,33 @@ import { GuitarEntitySchema } from "./guitars/guitar.model.js";
 dotenv.config();
 
 export var server = null;
+export const wsserver = null;
 
-await data.setupDBConnection(createConnection, [GuitarEntitySchema]).then((connection) => {
-  const app = express();
-  const port = process.env.PORT || 3000;
+await data
+  .setupDBConnection(createConnection, [GuitarEntitySchema])
+  .then((connection) => {
+    const app = express();
+    const port = process.env.PORT || 3000;
 
-  preRouteMiddleware(app);
+    preRouteMiddleware(app);
 
-  app.use(express.static("public"));
-  app.use(guitarRouter);
+    app.use(express.static("public"));
+    app.use(guitarRouter);
 
-  postRouteMiddleware(app);
+    postRouteMiddleware(app);
 
-  server = app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    server = app.listen(port, () => {
+      console.log(`Example app listening at http://localhost:${port}`);
+    });
+
+    wsserver = ws.setupWSServer(
+      server,
+      (wss) => {
+        console.log("connected to the wss");
+      },
+      (wss, m) => {
+        console.log(m);
+        wss.send("hi back");
+      }
+    );
   });
-
-  const wsserver = ws.setupWSServer(server, ()=>{console.log("connected to the wss")}, (wss, m) => {
-    console.log(m);
-    wss.send("hi back!");
-  });
-});
