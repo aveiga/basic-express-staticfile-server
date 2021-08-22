@@ -3,14 +3,22 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 import dotenv from "dotenv";
 
-import { preRouteMiddleware, postRouteMiddleware, data, ws } from "middleware";
+import {
+  preRouteMiddleware,
+  postRouteMiddleware,
+  data,
+  ws,
+  amqp,
+} from "middleware";
 import guitarRouter from "./guitars/guitar.routes.js";
 import { GuitarEntitySchema } from "./guitars/guitar.model.js";
 
 dotenv.config();
 
 export var server = null;
-export const wsserver = null;
+export var wsserver = null;
+export var amqpChannel = null;
+// export const
 
 await data
   .setupDBConnection(createConnection, [GuitarEntitySchema])
@@ -39,4 +47,22 @@ await data
         wss.send("hi back");
       }
     );
+
+    amqp.setupAQMPConnection().then((ch) => {
+      console.log(ch);
+      amqpChannel = ch;
+      amqpChannel.assertQueue("task").then(function (ok) {
+        console.log(ok);
+        return amqpChannel.sendToQueue("task", Buffer.from("something to do"));
+      });
+
+      ch.assertQueue("task").then(function (ok) {
+        return ch.consume("task", function (msg) {
+          if (msg !== null) {
+            console.log(msg.content.toString());
+            ch.ack(msg);
+          }
+        });
+      });
+    });
   });
