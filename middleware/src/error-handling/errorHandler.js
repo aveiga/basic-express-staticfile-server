@@ -42,5 +42,5 @@ export class TooManyRequestsError extends CustomError {
 }
 
 export function errorHandler(err, req, res, next) {
-  res.status(err.statusCode).send(err);
+  res.status(err?.statusCode || 500).send(err.message);
 }
