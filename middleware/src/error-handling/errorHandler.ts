@@ -4,14 +4,14 @@ export const ErrorCategories = {
 };
 
 export class CustomError extends Error {
-  statusCode;
-  message;
-  category;
-  username;
-  timestamp;
-  error;
+  statusCode: number;
+  message: string;
+  category: string;
+  username: string;
+  timestamp: number;
+  error: any;
 
-  constructor(req, message = "Business Error", error) {
+  constructor(req, message: string = "Business Error", error?) {
     super();
     this.statusCode = 500;
     this.message = message;

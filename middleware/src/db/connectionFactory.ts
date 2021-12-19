@@ -1,9 +1,11 @@
+import { Connection } from "typeorm";
+
 export function setupDBConnection(
-  createConnection,
-  entities,
-  migrations,
-  subscribers
-) {
+  createConnection: Function,
+  entities: [Object | string],
+  migrations: [Object | string],
+  subscriber: [Object | string]
+): Promise<Connection> {
   const basePostgresOptions = {
     type: "postgres",
     host: process.env.DB_ADDR,

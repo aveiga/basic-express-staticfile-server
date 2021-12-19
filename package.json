@@ -6,7 +6,11 @@
     "type": "git",
     "url": "git+https://github.com/aveiga/basic-express-staticfile-server.git"
   },
-  "scripts": {},
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch"
+  },
   "author": "André Veiga",
   "license": "MIT",
   "bugs": {
