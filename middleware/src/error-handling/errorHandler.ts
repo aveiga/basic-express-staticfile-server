@@ -1,3 +1,5 @@
+import { logger } from "../logging/logger.js";
+
 export const ErrorCategories = {
   BUSINESS_ERROR: "BUSINESS_ERROR",
   ACCESS_CONTROL: "ACCESS_CONTROL",
@@ -32,6 +34,16 @@ export class ForbiddenError extends CustomError {
   }
 }
 
+export class UnprocessableEntity extends CustomError {
+  constructor(req, message = "Unprocessable Entity", error) {
+    super(req);
+    this.statusCode = 422;
+    this.message = message;
+    this.category = ErrorCategories.BUSINESS_ERROR;
+    this.error = error;
+  }
+}
+
 export class TooManyRequestsError extends CustomError {
   constructor(req, message = "Too Many Requests") {
     super(req);
@@ -42,5 +54,6 @@ export class TooManyRequestsError extends CustomError {
 }
 
 export function errorHandler(err, req, res, next) {
-  res.status(err?.statusCode || 500).send(err.message);
+  logger.error(err.error);
+  res.status(err?.statusCode || 500).send(err);
 }

@@ -1,5 +1,5 @@
 import session from "express-session";
-import Keycloak from "keycloak-connect";
+import Keycloak, { KeycloakConfig } from "keycloak-connect";
 // import winston from "winston";
 import * as expressWinston from "express-winston";
 
@@ -17,8 +17,21 @@ export * as validator from "./input-validation/validator.js";
 export * as rateLimiting from "./rate-limiting/rateLimiterFactory.js";
 
 export function preRouteMiddleware(app) {
+  let kcConfig: KeycloakConfig = {
+    // @ts-ignore
+    clientId: process.env.OAUTH_CLIENT,
+    credentials: {
+      secret: process.env.OAUTH_CLIENT_SECRET,
+    },
+    "auth-server-url": process.env.OAUTH_SERVER_URL,
+    realm: process.env.OAUTH_REALM,
+    resource: process.env.OAUTH_RESOURCE,
+    "ssl-required": process.env.OAUTH_SSL_REQUIRED,
+    "confidential-port": process.env.OAUTH_CONFIDENTIAL_PORT,
+  };
+
   const memoryStore = new session.MemoryStore();
-  const keycloak = new Keycloak({ store: memoryStore });
+  const keycloak = new Keycloak({ store: memoryStore }, kcConfig);
 
   app.use(
     session({
@@ -29,8 +42,8 @@ export function preRouteMiddleware(app) {
     })
   );
 
-  // app.use(keycloak.middleware());
-  // app.use(keycloak.protect());
+  app.use(keycloak.middleware());
+  app.use(keycloak.protect());
 
   app.use(
     expressWinston.logger({

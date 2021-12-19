@@ -8,6 +8,13 @@ export async function createOne() {
   return getRepository(Guitar).save(g);
 }
 
+export async function createGuitar(brand: string, model: string) {
+  const g = new Guitar();
+  g.brand = brand;
+  g.model = model;
+  return getRepository(Guitar).save(g);
+}
+
 export async function getAll() {
   return getRepository(Guitar).find();
 }

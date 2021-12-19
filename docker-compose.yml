@@ -46,6 +46,15 @@ services:
     volumes:
       - ./tmp/rabbitmq/:/var/lib/rabbitmq
     hostname: my-rabbit
+  redis:
+    image: "bitnami/redis:latest"
+    # networks:
+    #   consul-network:
+    #     ipv4_address: 172.18.0.5
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
 #   rabbitmq-management:
 #     image: rabbitmq:3-management
 #     restart: always
@@ -68,12 +77,3 @@ services:
 #   depends_on:
 #     - consul
 #     - postgres
-# redis:
-#   image: "bitnami/redis:latest"
-#   networks:
-#     consul-network:
-#       ipv4_address: 172.18.0.5
-#   environment:
-#     - ALLOW_EMPTY_PASSWORD=yes
-#   ports:
-#     - "6379:6379"

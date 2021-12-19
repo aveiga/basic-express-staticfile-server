@@ -26,6 +26,7 @@ await data.setupDBConnection(createConnection, [Guitar]).then((connection) => {
 
   preRouteMiddleware(app);
 
+  app.use(express.json());
   app.use(express.static("public"));
   app.use(guitarRouter);
 
