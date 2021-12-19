@@ -23,7 +23,6 @@
 
 ## To cleanup
 
-- keycloak.json > get values from env vars
 - logger > define format
 - try to use pure oauth libs
 - Websocket > keep alive
@@ -41,7 +40,3 @@ Quick answer:
 ### How to access the RabbitMQ Management UI?
 
 - Go to http://localhost:15672/ using username and password: guest
-
-## Topics not covered
-
-- [Typescript](https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/ and https://www.pullrequest.com/blog/intro-to-using-typescript-in-a-nodejs-express-project/)
