@@ -43,7 +43,7 @@ export function preRouteMiddleware(app) {
   );
 
   app.use(keycloak.middleware());
-  app.use(keycloak.protect());
+  // app.use(keycloak.protect());
 
   app.use(
     expressWinston.logger({
